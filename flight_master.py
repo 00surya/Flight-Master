@@ -2,13 +2,13 @@ import pygame
 import os
 import random
 import pyautogui
-player='gallery\sprites\player.png'
-background='gallery\sprites\\background.png'
+player='gallery\sprites\player.png' #
+background='gallery\sprites\\background.png' #
 screen = pygame.display.set_mode((720, 480))
 FPS = 30
 GAME_SPRITES={}
 pip=True
-def welcome_screen():
+def welcome_screen(): #
     image=pygame.image.load(player)
     rect = image.get_rect()
     rect.center =(200,300)
@@ -27,29 +27,29 @@ def welcome_screen():
                 pygame.display.update()
 
 def main_game():
-    image=pygame.image.load(player)
-    rect = image.get_rect()
-    rect.center =(200,300)
+    image=pygame.image.load(player)#
+    rect = image.get_rect()#
+    rect.center =(200,300)#
     # rect = pygame.Rect((350, 220), (32, 32))  # Often used to track the position of an object in pygame.
     # image = pygame.Surface((32, 32))  # Images are Surfaces, so here I create an 'image' from scratch since I don't have your image.
     # image.fill(pygame.Color('white'))  # I fill the image with a white color.
-    ballVellY=-10
-    ballxy={'x':random.randrange(10,15),'y':-5}
-    velocity = [0, 0]  # This is the current velocity.
-    speed = 200  # This is the speed the player will move in (pixels per second).
-    dx = []  # This will be our queue. It'll keep track of the horizontal movement.
+    # ballVellY=-10
+    # ballxy={'x':random.randrange(10,15),'y':-5}
+    # velocity = [0, 0]  # This is the current velocity.
+    # speed = 200  # This is the speed the player will move in (pixels per second).
+    # dx = []  # This will be our queue. It'll keep track of the horizontal movement.
     while True:
         
         dt = clock.tick(FPS) / 1000.0  # This will give me the time in seconds between each loop.
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                raise SystemExit
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    dx.insert(0, -speed)
-                elif event.key == pygame.K_RIGHT:
-                    dx.insert(0, speed)
+        for event in pygame.event.get():#
+            if event.type == pygame.QUIT:#
+                raise SystemExit#
+            elif event.type == pygame.KEYDOWN:#
+                if event.key == pygame.K_LEFT:#
+                    dx.insert(0, -speed)#
+                elif event.key == pygame.K_RIGHT:#
+                    dx.insert(0, speed) #
             # elif event.type == pygame.KEYUP:
                 # if event.key == pygame.K_LEFT:
                     # dx.remove(-speed)
@@ -81,33 +81,9 @@ def main_game():
         screen.fill((0, 0, 0))
         screen.blit(bck_image, (0,0))
         screen.blit(image, rect)
-        # for i in range(0,len(ballxy):
-            # screen.blit(GAME_SPRITES['balls'][2],(x,y))
         pygame.display.update()
 
         # print dx  # Uncomment to see what's happening.
 
-
-def balls():
-    a=[]
-    for item in os.listdir('gallery\\sprites'):
-        path=os.path.join(os.getcwd(),item)
-        a.append(path)
-    return a
         
-if __name__ == "__main__":
-    pygame.init()    
-    clock = pygame.time.Clock()
-    bck_image=pygame.image.load(background)
-    GAME_SPRITES['balls'] = (
-        pygame.image.load('gallery/sprites/ball1.png').convert_alpha(),
-        pygame.image.load('gallery/sprites/ball2.png').convert_alpha(),
-        pygame.image.load('gallery/sprites/ball3.png').convert_alpha(),
-        pygame.image.load('gallery/sprites/ball4.png').convert_alpha(),
-        pygame.image.load('gallery/sprites/ball5.png').convert_alpha(),
-        pygame.image.load('gallery/sprites/danger.png').convert_alpha(),
-        )
-    while True:
-        welcome_screen()
-        main_game()
 
