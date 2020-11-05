@@ -35,7 +35,7 @@ def welcome_screen():
 
 
 def main_game():
-    imagee=pygame.image.load(player).convert_alpha()
+    imagee=pygame.image.load(player).convert_alpha()  ####>>>>>>>>>>>> plane image
     rectt = imagee.get_rect()
     rectt.center =(200,300)
     
@@ -51,7 +51,7 @@ def main_game():
         
         ball=get_ball()
         print(ball)
-        image=pygame.image.load(ball).convert_alpha()
+        image=pygame.image.load(ball).convert_alpha()  ####################### >>  ball image
         rect = image.get_rect()
 
         for event in pygame.event.get():
@@ -69,19 +69,8 @@ def main_game():
             rectt.x+=dx[0] * dt
             if rectt.x>345 or rectt.x<-3:
                 lost()
-            # print(rectt.x)
-
-        # What happend if plane were crashed?    
-        # if ballx+image.get_width()+4>rectt.x-10>ballx+image.get_width()-4:
-
-        # ball sqare area ballx
-
-        # if ballx==rectt.x or (rectt.x)+1>ballx>rectt.x:    
-            # print(ballx)
-        #     print(rectt.x)
-
-        #     # print("hello this is snehiljdhwu cuhdu ydusvy scdgybxerd7 wbel")
-        #     lost()
+            
+        
 
         f = getupdate()
         
@@ -91,11 +80,12 @@ def main_game():
         if bally> 500:
             xx=-2
             yyy=20
-            ballx=random.randrange(11,350)
-        
-                            
-            # print(ballx)
-        # pk=bck_motion-700   
+            ballx=random.randrange(11,350) 
+
+        # what if i lost
+        if (300+imagee.get_height()>=bally+image.get_height()>=300) and (rectt.x+imagee.get_width()>=ballx+image.get_width()>=rectt.x or rectt.x+imagee.get_width()>=ballx>=rectt.x):
+            lost()    
+
         screen.fill((0, 0, 0))
         screen.blit(bck_image, (0,bck_motion))
         screen.blit(bck_image, (0,(bck_motion-1300)))
@@ -107,11 +97,8 @@ def main_game():
 
         pygame.display.update()
 def lost():
-    radfefr
-    # lost=pygame.image.load(dino).convert_alpha()
-    # dinoo = lost.get_rect()
-    # dinoo.center =(20,30)
-    # screen.blit(lost,dinoo)
+    I am the only eye-vitness and the funniest thing is you lost the game sir.
+    
         
       
 def getupdate():
